@@ -8,7 +8,10 @@ describe('Demo App - ClassicRunner - Puppeteer', function () {
 
   beforeEach(async () => {
     // Initialize the puppeteer browser
-    browser = await puppeteer.launch({headless: false})
+    browser = await puppeteer.launch({
+      headless: process.env.CI || false
+    });
+
     page = await browser.newPage();
     
     // Initialize the Runner for your test.
